@@ -3,7 +3,7 @@ chai.Assertion.includeStack = true
 chai.should()
 expect = chai.expect
 
-Class = require('../lib/class.js')(this)
+Class = require('../lib/class.js')(global)
 
 describe 'Class', ->
   methods = null
@@ -195,3 +195,23 @@ describe 'Class', ->
         }
 
         expect(Base.print('foo')).to.equal("<mixed>`foo`</mixed>")
+
+  describe "introspection and pollution", ->
+    it "classes know their names, if you tell it", ->
+      Base = Class 'Base'
+      expect(Base.id).to.equal 'Base'
+
+    it "classes will pollute into the argument passed into the require, if an id is provided", ->
+      Class 'Bass'
+      expect(global.Bass).to.not.be.undefined
+
+    it "won't pollute if no argument is passed into the require", ->
+      ConservativeClass = require('../lib/class.js')()
+      ConservativeClass 'Batt'
+      expect(global.Batt).to.be.undefined
+
+    it "builds object paths into the polluter space when needed", ->
+      Classer = Class "Clazzy.Classified.Klass"
+      expect(global.Clazzy).to.not.be.undefined
+      expect(global.Clazzy.Classified).to.not.be.undefined
+      expect(global.Clazzy.Classified.Klass).to.equal Classer

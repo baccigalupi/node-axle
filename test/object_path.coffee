@@ -28,9 +28,10 @@ describe 'ObjectPath', ->
         expect(ObjectPath.write('Kiss.My.App', 13)).to.equal(Kiss.My.App)
 
     describe "decorating a passed in object", ->
-      Gotta = {}
-      ObjectPath.write('Have', 'that funk', Gotta)
-      expect(Gotta.Have).to.equal('that funk')
+      it "works the same", ->
+        Gotta = {}
+        ObjectPath.write('Have', 'that funk', Gotta)
+        expect(Gotta.Have).to.equal('that funk')
 
 
   describe '#read', ->
