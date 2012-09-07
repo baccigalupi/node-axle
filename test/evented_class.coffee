@@ -3,7 +3,7 @@ chai.Assertion.includeStack = true
 chai.should()
 expect = chai.expect
 
-EventedClass = require('../lib/evented_class.js')(this)
+EventedClass = require('../lib/evented_class.js')(global)
 
 describe 'EventedClass', ->
   it 'acts like a normal class', ->
@@ -16,6 +16,24 @@ describe 'EventedClass', ->
 
     foo.opts.should.deep.equal {bar: 'bar', baz: 'baz'}
     foo.should.be.a.instanceof Foo
+
+  it "can pollute the global space", ->
+    Zardozerator = EventedClass 'Bar.Baz.Zardoz'
+    expect(global.Bar).to.not.be.undefined
+    expect(global.Bar.Baz).to.not.be.undefined
+    expect(global.Bar.Baz.Zardoz).to.equal(Zardozerator)
+
+  it "can pollute the global space even after another instance of the evented class creator has been spawned", ->
+    context = {}
+    Eventer = require('../lib/evented_class.js')(context)
+    Klass = Eventer 'MyKlass'
+    expect(global.MyKlass).to.be.undefined
+    expect(context.MyKlass).to.equal(Klass)
+
+    AnotherClass = EventedClass "Zardy.Baztipher.Fooo"
+    expect(global.Zardy).to.not.be.undefined
+    expect(global.Zardy.Baztipher).to.not.be.undefined
+    expect(global.Zardy.Baztipher.Fooo).to.equal(AnotherClass)
 
   describe 'from EventEmitter', ->
     Foo = null
