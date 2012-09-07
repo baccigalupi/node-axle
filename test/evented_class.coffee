@@ -3,7 +3,7 @@ chai.Assertion.includeStack = true
 chai.should()
 expect = chai.expect
 
-EventedClass = require '../lib/evented_class.js'
+EventedClass = require('../lib/evented_class.js')(this)
 
 describe 'EventedClass', ->
   it 'acts like a normal class', ->

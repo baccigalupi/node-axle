@@ -3,7 +3,7 @@ chai.Assertion.includeStack = true
 chai.should()
 expect = chai.expect
 
-Class = require '../lib/class.js'
+Class = require('../lib/class.js')(this)
 
 describe 'Class', ->
   methods = null
