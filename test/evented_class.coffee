@@ -8,7 +8,7 @@ EventedClass = require('../lib/evented_class.js')(global)
 
 describe 'EventedClass', ->
   it 'acts like a normal class', ->
-    Foo = EventedClass.subclass {
+    Foo = EventedClass {
       initialize: (opts)->
         @opts = opts
     }
@@ -19,7 +19,7 @@ describe 'EventedClass', ->
     foo.should.be.a.instanceof Foo
 
   it "can pollute the global space", ->
-    Zardozerator = EventedClass.subclass 'Bar.Baz.Zardoz'
+    Zardozerator = EventedClass 'Bar.Baz.Zardoz'
     expect(global.Bar).to.not.be.undefined
     expect(global.Bar.Baz).to.not.be.undefined
     expect(global.Bar.Baz.Zardoz).to.equal(Zardozerator)
@@ -31,7 +31,7 @@ describe 'EventedClass', ->
     expect(global.MyKlass).to.be.undefined
     expect(context.MyKlass).to.equal(Klass)
 
-    AnotherClass = EventedClass.subclass "Zardy.Baztipher.Fooo"
+    AnotherClass = EventedClass "Zardy.Baztipher.Fooo"
     expect(global.Zardy).to.not.be.undefined
     expect(global.Zardy.Baztipher).to.not.be.undefined
     expect(global.Zardy.Baztipher.Fooo).to.equal(AnotherClass)
@@ -43,9 +43,9 @@ describe 'EventedClass', ->
     bar = null
 
     beforeEach ->
-      Foo = EventedClass.subclass()
+      Foo = EventedClass()
       foo = new Foo()
-      Bar = EventedClass.subclass()
+      Bar = EventedClass()
       bar = new Bar()
 
     it 'are preset', ->
@@ -92,7 +92,7 @@ describe 'EventedClass', ->
   describe "evented attribute accessors", ->
     Task = null; task = null; owner = null; props = null
     beforeEach ->
-      Task = EventedClass.subclass {}, {
+      Task = EventedClass {}, {
         properties: ['name', 'due_at', 'state']
       }
 
