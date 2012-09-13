@@ -4,7 +4,8 @@ chai.should()
 expect = chai.expect
 sinon = require('sinon')
 
-DriveClass = require('../lib/drive_class.js')(global)
+Axle = require('../lib/axle.js')(global)
+DriveClass = Axle.DriveClass
 
 describe "DriveClass", ->
   it 'acts like a normal class', ->

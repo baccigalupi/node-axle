@@ -3,7 +3,8 @@ chai.Assertion.includeStack = true
 chai.should()
 expect = chai.expect
 
-Class = require('../lib/class.js')(global)
+Axle = require('../lib/axle.js')(global)
+Class = Axle.Class
 
 describe 'Class', ->
   methods = null
@@ -206,7 +207,7 @@ describe 'Class', ->
       expect(global.Bass).to.not.be.undefined
 
     it "won't pollute if no argument is passed into the require", ->
-      ConservativeClass = require('../lib/class.js')()
+      ConservativeClass = require('../lib/axle/class.js')()
       ConservativeClass 'Batt'
       expect(global.Batt).to.be.undefined
 

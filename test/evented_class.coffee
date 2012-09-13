@@ -4,7 +4,8 @@ chai.should()
 expect = chai.expect
 sinon = require('sinon')
 
-EventedClass = require('../lib/evented_class.js')(global)
+Axle = require('../lib/axle.js')(global)
+EventedClass = Axle.EventedClass
 
 describe 'EventedClass', ->
   it 'acts like a normal class', ->
@@ -26,7 +27,7 @@ describe 'EventedClass', ->
 
   it "can pollute the global space even after another instance of the evented class creator has been spawned", ->
     context = {}
-    Eventer = require('../lib/evented_class.js')(context)
+    Eventer = require('../lib/axle/evented_class.js')(context)
     Klass = Eventer 'MyKlass'
     expect(global.MyKlass).to.be.undefined
     expect(context.MyKlass).to.equal(Klass)

@@ -3,7 +3,7 @@ chai.Assertion.includeStack = true
 chai.should()
 expect = chai.expect
 
-ObjectPath = require('../lib/object_path.js')(global)
+ObjectPath = require('../lib/axle/object_path.js')(global)
 
 describe 'ObjectPath', ->
   describe '#write', ->

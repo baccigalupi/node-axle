@@ -10,5 +10,6 @@
   },
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script --reporter list --ignore-leaks"
-  }
+  },
+  "main": "./lib/axle.js"
 }
