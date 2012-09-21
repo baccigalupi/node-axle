@@ -1,7 +1,7 @@
 Axel
 ====
 
-Axel is a series of pseudo-classical inhert classes and pattern
+Axel is a series of pseudo-classical inheritance classes and pattern
 extracted from the front-end framework
 [Wheel.js](http://github.com/baccigalupi/wheel.js) and ported to node.js. 
 The class structure is inspired by Ruby, with inheritance of both class 

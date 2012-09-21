@@ -1,12 +1,12 @@
 {
   "name": "axle",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "description": "Axel is a series of pseudo-classical inheritance classes and pattern extracted from the front-end framework Wheel.js",
   "devDependencies": {
     "coffee-script":  ">=1.3.1",
     "mocha":          "1.4.2",
     "chai":           "1.2.0",
-    "sinon":          "1.4.2",
-    "jake":           "0.3.x"
+    "sinon":          "1.4.2"
   },
   "dependencies": {
     "objectPath": "git://github.com/baccigalupi/node-objectPath#master"
