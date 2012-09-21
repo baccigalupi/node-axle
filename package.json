@@ -2,14 +2,18 @@
   "name": "axle",
   "version": "0.0.1",
   "devDependencies": {
-    "coffee-script": ">=1.3.1",
-    "mocha": "1.4.2",
-    "chai": "1.2.0",
-    "sinon": "1.4.2",
-    "jake": "0.3.x"
+    "coffee-script":  ">=1.3.1",
+    "mocha":          "1.4.2",
+    "chai":           "1.2.0",
+    "sinon":          "1.4.2",
+    "jake":           "0.3.x"
+  },
+  "dependencies": {
+    "objectPath": "git://github.com/baccigalupi/node-objectPath#master"
   },
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script --reporter list --ignore-leaks"
+    "test": "mocha --compilers coffee:coffee-script --reporter list --ignore-leaks",
+    "test_leaks": "mocha --compilers coffee:coffee-script --reporter list"
   },
   "main": "./lib/axle.js"
 }
